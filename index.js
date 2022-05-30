@@ -7,8 +7,8 @@ const cors = require('cors')
 app.use(cors())
 
 const url = 'https://tv9telugu.com/andhra-pradesh/'
-const ent_url= 'https://tv9telugu.com/entertainment'
-const tech_url = 'https://tv9telugu.com/technology'
+const ent_url= 'https://tv9telugu.com/entertainment/'
+const tech_url = 'https://tv9telugu.com/technology/'
 
 app.get('/', function (req, res) {
     axios(url)
