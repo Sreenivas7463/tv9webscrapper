@@ -14,7 +14,7 @@ const tech_url = 'https://tv9telugu.com/technology/'
 const news18m = 'https://telugu.news18.com/news'
 
 const news18 = 'https://telugu.news18.com/news/'
-
+const news18base = 'https://telugu.news18.com'
 //----------------------------------------------------------------news 18 ----------------------------------------------------------------
 
 app.get('/', function (req, res) {
@@ -163,7 +163,7 @@ app.get('/news18home', function (req, res) {
 
         $('.blog-list-blog', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('title')
-            const url = news18m+'/'+$(this).find('a').attr('href')
+            const url = news18base+$(this).find('a').attr('href')
             const img = $(this).find('img').attr('data-original')
             articles.push({
                 title,
@@ -185,7 +185,7 @@ app.get('/news18', function (req, res) {
 
         $('.blog_list_row', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('title')
-            const url = news18+$(this).find('a').attr('href')
+            const url = news18base+$(this).find('a').attr('href')
             const img = $(this).find('img').attr('data-src')
             articles.push({
                 title,
