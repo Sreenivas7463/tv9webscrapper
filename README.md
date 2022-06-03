@@ -1,6 +1,14 @@
 # NodeJS Webscraper
 Demo for showing how to scrape data and get backend data to the frontend. This repository is for the video tutorial [here](https://youtu.be/-3lqUHeZs_0)
 
+## [https://sreenewsapi.vercel.app/](https://sreenewsapi.vercel.app/)
+## [https://sreenewsapi.vercel.app/results/2](https://sreenewsapi.vercel.app/results/2)
+
+## [https://sreenewsapi.vercel.app/technology](https://sreenewsapi.vercel.app/technology)
+## [https://sreenewsapi.vercel.app/technology/2](https://sreenewsapi.vercel.app/technology/2)
+
+## [https://sreenewsapi.vercel.app/entertainment](https://sreenewsapi.vercel.app/entertainment)
+## [https://sreenewsapi.vercel.app/entertainment/2](https://sreenewsapi.vercel.app/entertainment/2)
 
 ## To run this project
 
