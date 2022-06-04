@@ -17,6 +17,14 @@ const news18 = 'https://telugu.news18.com/news/'
 const news18base = 'https://telugu.news18.com'
 //----------------------------------------------------------------news 18 ----------------------------------------------------------------
 
+//----------------------------------------------------------------news ABN ----------------------------------------------------------------
+
+const abn = 'http://www.andhrajyothy.com/pages/latest-news'
+
+const abnpg = 'http://www.andhrajyothy.com/pages/latest-news?page='
+
+// ----------------------------------------------------------------end news ABN ----------------------------------------------------------------
+
 app.get('/', function (req, res) {
     axios(url)
     .then(response => {
@@ -198,6 +206,52 @@ app.get('/news18', function (req, res) {
 
 })
 
+// ABN article FETCH--
+
+app.get('/abn', function (req, res) {
+    axios(abn)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('tr', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('img').attr('title')
+            const url = news18base+$(this).find('a').attr('href')
+            const img = $(this).find('img').attr('src')
+            articles.push({
+                title,
+                url,
+                img
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
+app.get('/abnpg/:id', function (req, res) {
+    let pageNo = req.params.id
+    axios(abnpg+`${pageNo}`)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('tr', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('img').attr('title')
+            const url = news18base+$(this).find('a').attr('href')
+            const img = $(this).find('img').attr('src')
+            articles.push({
+                title,
+                url,
+                img
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
 
 
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`))
