@@ -34,7 +34,7 @@ const zipcodes = [90019, 90020]
 
 zipcodes.forEach(element => {
 
-const yelplist = `https://www.yelp.com/search?find_desc=Restaurants&find_loc=${element}`
+const yelplist = 'https://www.yelp.com/search?find_desc=Restaurants&find_loc='+element
 
 
 
