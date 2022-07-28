@@ -37,13 +37,53 @@ zipcodes.forEach(element => {
 const yelplist = 'https://www.yelp.com/search?find_desc=Restaurants&find_loc='+element
 
 
-
-app.get('/yelplist', function (req, res) {
+app.get('/yelplistrestaurants', function (req, res) {
     axios(yelplist)
     .then(response => {
         const html = response.data
-        console.log(html);
-    })
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('.background-color--white__09f24__ulvSM', html).each(function () {
+            
+            const web = $(this).find('.css-1um3nx').text()
+            const mobile =  $(this).find('.css-1p9ibgf').text()
+            const addr = $(this).find('.css-qyp8bo').text()
+            
+            const url = yelp
+             // const img = $(this).find('.recipe-image').attr('style')
+            
+             if(web !='' && mobile!='' && addr !='')
+             {
+             articles.push({
+                 web,
+                 mobile,
+                 addr,
+                 url,
+                 //img
+             })
+             }
+             
+        })
+        var i=0;
+        $('.border-color--default__09f24__NPAKY', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('h1').text()
+           // const url = $(this).find('a').attr('href')
+            // const img = $(this).find('.recipe-image').attr('style')
+            
+            if(title !='' && i==0)
+             {
+            articles.push({
+                title
+                //url,
+                //img
+            })
+            i++;
+        }
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
 })
 
 });
