@@ -6,9 +6,13 @@ const app = express()
 const cors = require('cors')
 app.use(cors())
 
+
+
 const url = 'https://tv9telugu.com/andhra-pradesh/'
 const ent_url= 'https://tv9telugu.com/entertainment/'
 const tech_url = 'https://tv9telugu.com/technology/'
+
+
 
 //----------------------------------------------------------------news 18 ----------------------------------------------------------------
 const news18m = 'https://telugu.news18.com/news'
@@ -24,6 +28,157 @@ const abn = 'http://www.andhrajyothy.com/pages/latest-news'
 const abnpg = 'http://www.andhrajyothy.com/pages/latest-news?page='
 
 // ----------------------------------------------------------------end news ABN ----------------------------------------------------------------
+
+const yelp = 'https://www.yelp.com/biz/smashburger-san-francisco-2/'
+
+app.get('/yelp', function (req, res) {
+    axios(yelp)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('.background-color--white__09f24__ulvSM', html).each(function () {
+            
+            const web = $(this).find('.css-1um3nx').text()
+            const mobile =  $(this).find('.css-1p9ibgf').text()
+            const addr = $(this).find('.css-qyp8bo').text()
+            
+            const url = yelp
+             // const img = $(this).find('.recipe-image').attr('style')
+            
+             if(web !='' && mobile!='' && addr !='')
+             {
+             articles.push({
+                 web,
+                 mobile,
+                 addr,
+                 url,
+                 //img
+             })
+             }
+             
+        })
+        var i=0;
+        $('.border-color--default__09f24__NPAKY', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('h1').text()
+           // const url = $(this).find('a').attr('href')
+            // const img = $(this).find('.recipe-image').attr('style')
+            
+            if(title !='' && i==0)
+             {
+            articles.push({
+                title
+                //url,
+                //img
+            })
+            i++;
+        }
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
+
+const yelpurl = 'https://www.yelp.com/biz/'
+
+app.get('/yelp/:id', (req, res) => {
+    let string = req.params.id
+    axios(yelpurl+string)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+
+       
+
+        $('.background-color--white__09f24__ulvSM', html).each(function () {
+            
+            const web = $(this).find('.css-1um3nx').text()
+            const mobile =  $(this).find('.css-1p9ibgf').text()
+            const addr = $(this).find('.css-qyp8bo').text()
+            const ipaddress = req.socket.remoteAddress
+            
+            const url = yelp
+             // const img = $(this).find('.recipe-image').attr('style')
+            
+             if(web !='' && mobile!='' && addr !='')
+             {
+             articles.push({
+                 web,
+                 mobile,
+                 addr,
+                 ipaddress,
+                 url,
+                 //img
+             })
+             }
+             
+        })
+
+        var j=0
+        $('.border-color--default__09f24__NPAKY', html).each(function () {
+           
+            const timing = $(this).find('table').text()
+            if(timing!='' && j==0){
+            articles.push({
+                timing
+            })
+            j++;
+        }
+     
+        })
+
+
+        var i=0;
+        $('.border-color--default__09f24__NPAKY', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('h1').text()
+           // const url = $(this).find('a').attr('href')
+            // const img = $(this).find('.recipe-image').attr('style')
+            
+            if(title !='' && i==0)
+             {
+            articles.push({
+                title
+                //url,
+                //img
+            })
+            i++;
+        }
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
+
+
+const vismai = 'https://vismaifood.com/te'
+
+app.get('/vismai', function (req, res) {
+    axios(vismai)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('.recipe-item', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('a').attr('title')
+            const url = $(this).find('a').attr('href')
+            const img = $(this).find('.recipe-image').attr('style')
+            articles.push({
+                title,
+                url,
+                img
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
 
 app.get('/', function (req, res) {
     axios(url)
