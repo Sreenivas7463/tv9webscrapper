@@ -29,6 +29,20 @@ const abnpg = 'http://www.andhrajyothy.com/pages/latest-news?page='
 
 // ----------------------------------------------------------------end news ABN ----------------------------------------------------------------
 
+const zipcodes = [90019, 90020, 90021, 90022, 90023]
+
+
+zipcodes.forEach(element => {
+
+const yelplist = `https://www.yelp.com/search?find_desc=Restaurants&find_loc=${element}`
+
+console.log(yelplist);
+
+});
+
+
+
+
 const yelp = 'https://www.yelp.com/biz/smashburger-san-francisco-2/'
 
 app.get('/yelp', function (req, res) {
