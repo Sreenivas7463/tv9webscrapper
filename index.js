@@ -29,7 +29,7 @@ const abnpg = 'http://www.andhrajyothy.com/pages/latest-news?page='
 
 // ----------------------------------------------------------------end news ABN ----------------------------------------------------------------
 
-const zipcodes = [90019, 90020, 90021, 90022, 90023]
+const zipcodes = [90019, 90020]
 
 
 zipcodes.forEach(element => {
