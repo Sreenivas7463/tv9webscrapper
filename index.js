@@ -36,13 +36,13 @@ zipcodes.forEach(element => {
 
 const yelplist = `https://www.yelp.com/search?find_desc=Restaurants&find_loc=${element}`
 
-console.log(yelplist);
+
 
 app.get('/yelplist', function (req, res) {
     axios(yelplist)
     .then(response => {
         const html = response.data
-
+        console.log(html);
     })
 })
 
