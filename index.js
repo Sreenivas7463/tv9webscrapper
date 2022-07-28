@@ -46,7 +46,7 @@ app.get('/yelplistrestaurants', function (req, res) {
 
         $('.undefined list__09f24__ynIEd', html).each(function () {
             
-            const restitle = $(this).find('.css-1kb4wkh').attr('name')
+            const restitle = $(this).find('a.css-1kb4wkh').attr('name')
             const mobile =  $(this).find('.css-1p9ibgf').text()
             const addr = $(this).find('.css-qyp8bo').text()
             
