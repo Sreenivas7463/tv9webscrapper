@@ -44,9 +44,9 @@ app.get('/yelplistrestaurants', function (req, res) {
         const $ = cheerio.load(html)
         const articles = []
 
-        $('.background-color--white__09f24__ulvSM', html).each(function () {
+        $('.undefined list__09f24__ynIEd', html).each(function () {
             
-            const web = $(this).find('.css-1um3nx').text()
+            const restitle = $(this).find('.css-1kb4wkh').attr('name')
             const mobile =  $(this).find('.css-1p9ibgf').text()
             const addr = $(this).find('.css-qyp8bo').text()
             
@@ -56,7 +56,7 @@ app.get('/yelplistrestaurants', function (req, res) {
              if(web !='' && mobile!='' && addr !='')
              {
              articles.push({
-                 web,
+                 restitle,
                  mobile,
                  addr,
                  url,
