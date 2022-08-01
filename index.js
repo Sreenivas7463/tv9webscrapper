@@ -69,7 +69,7 @@ app.get('/yelplistrestaurants', function (req, res) {
        
 
             
-            const url = yelp
+            //const url = yelp
              // const img = $(this).find('.recipe-image').attr('style')
             
              if(title !='')
