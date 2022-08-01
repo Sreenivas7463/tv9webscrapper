@@ -82,22 +82,7 @@ app.get('/yelplistrestaurants', function (req, res) {
              }
              
         })
-        var i=0;
-        $('.border-color--default__09f24__NPAKY', html).each(function () { //<-- cannot be a function expression
-            const title = $(this).find('h1').text();
-           // const url = $(this).find('a').attr('href')
-            // const img = $(this).find('.recipe-image').attr('style')
-            
-            if(title !='' && i==0)
-             {
-            articles.push({
-                title
-                //url,
-                //img
-            })
-            i++;
-        }
-        })
+        
         res.json(articles)
     }).catch(err => console.log(err))
 
