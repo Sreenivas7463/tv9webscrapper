@@ -6,6 +6,8 @@ const app = express()
 const cors = require('cors')
 app.use(cors())
 
+var x = require('x-ray')()
+
 
 
 const url = 'https://tv9telugu.com/andhra-pradesh/'
@@ -28,6 +30,21 @@ const abn = 'http://www.andhrajyothy.com/pages/latest-news'
 const abnpg = 'http://www.andhrajyothy.com/pages/latest-news?page='
 
 // ----------------------------------------------------------------end news ABN ----------------------------------------------------------------
+const zipcodes1 = [90019, 90020, 90021, 90022, 90023, 90024, 90025, 90026]
+
+
+zipcodes1.forEach(element => {
+  
+app.get('/yelp', function(req, res) {
+    var start = +new Date();
+    var stream = x('https://www.yelp.com/search?find_desc=Restaurants&find_loc='+element, 'main#main-content').stream()
+    stream.pipe(res)
+    var end = +new Date();
+    console.log("all users saved in " + (end-start) + " milliseconds");
+  })
+  
+});
+
 
 const zipcodes = [90019, 90020]
 
@@ -43,23 +60,23 @@ app.get('/yelplistrestaurants', function (req, res) {
         const html = response.data
         const $ = cheerio.load(html)
         const articles = []
-
+        console.log(html)
         $('.undefined list__09f24__ynIEd', html).each(function () {
             
-            const restitle = $(this).find('a').attr('name')
-            const mobile =  $(this).find('.css-1p9ibgf').text()
-            const addr = $(this).find('.css-qyp8bo').text()
+            const title = $(this).find('div > div > div > div.arrange-unit__09f24__rqHTg.arrange-unit-fill__09f24__CUubG.border-color--default__09f24__NPAKY > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > div').text()
+       
+            const link = 'https://www.yelp.com'+$(this).find('div > div > div > div.arrange-unit__09f24__rqHTg.arrange-unit-fill__09f24__CUubG.border-color--default__09f24__NPAKY > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > div > h3 > span > a').attr('href')
+       
+
             
             const url = yelp
              // const img = $(this).find('.recipe-image').attr('style')
             
-             if(restitle !='')
+             if(title !='')
              {
              articles.push({
-                 restitle,
-                 mobile,
-                 addr,
-                 url,
+                 title,
+                 link
                  //img
              })
              }
@@ -67,7 +84,7 @@ app.get('/yelplistrestaurants', function (req, res) {
         })
         var i=0;
         $('.border-color--default__09f24__NPAKY', html).each(function () { //<-- cannot be a function expression
-            const title = $(this).find('h1').text()
+            const title = $(this).find('h1').text();
            // const url = $(this).find('a').attr('href')
             // const img = $(this).find('.recipe-image').attr('style')
             
@@ -100,7 +117,8 @@ app.get('/yelp', function (req, res) {
         const $ = cheerio.load(html)
         const articles = []
 
-        $('.background-color--white__09f24__ulvSM', html).each(function () {
+        
+         $('.background-color--white__09f24__ulvSM', html).each(function () {
             
             const web = $(this).find('.css-1um3nx').text()
             const mobile =  $(this).find('.css-1p9ibgf').text()
