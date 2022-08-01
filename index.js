@@ -35,7 +35,7 @@ const zipcodes1 = [90019, 90020, 90021, 90022, 90023, 90024, 90025, 90026]
 
 zipcodes1.forEach(element => {
   
-app.get('/yelp', function(req, res) {
+app.get('/yelp1', function(req, res) {
     var start = +new Date();
     var stream = x('https://www.yelp.com/search?find_desc=Restaurants&find_loc='+element, 'main#main-content').stream()
     stream.pipe(res)
