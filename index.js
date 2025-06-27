@@ -11,7 +11,7 @@ var x = require('x-ray')()
 
 
 const url = 'https://tv9telugu.com/andhra-pradesh/'
-const ent_url= 'https://tv9telugu.com/entertainment/'
+const ent_url= 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=15567'
 const tech_url = 'https://tv9telugu.com/technology/'
 
 
@@ -314,7 +314,7 @@ app.get('/entertainment', function (req, res) {
 
 app.get('/entertainment/:id', function (req, res) {
     let pageNo = req.params.id
-    axios(ent_url+`/${pageNo}`)
+    axios(ent_url+`&pageNumber=${pageNo}`)
     .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
@@ -323,7 +323,7 @@ app.get('/entertainment/:id', function (req, res) {
         $('.imgCont', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
             const url = $(this).find('a').attr('href')
-            const img = $(this).find('img').attr('data-src')
+            const img = $(this).find('img').attr('src')
             articles.push({
                 title,
                 url,
