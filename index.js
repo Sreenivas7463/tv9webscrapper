@@ -12,7 +12,7 @@ var x = require('x-ray')()
 
 const url = 'https://tv9telugu.com/andhra-pradesh/'
 const ent_url= 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=15567'
-const tech_url = 'https://tv9telugu.com/technology/'
+const tech_url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=23656'
 
 
 
@@ -345,7 +345,7 @@ app.get('/technology', function (req, res) {
         $('.imgCont', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
             const url = $(this).find('a').attr('href')
-            const img = $(this).find('img').attr('data-src')
+            const img = $(this).find('img').attr('src')
             articles.push({
                 title,
                 url,
