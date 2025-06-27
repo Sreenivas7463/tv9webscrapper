@@ -10,7 +10,7 @@ var x = require('x-ray')()
 
 
 
-const url = 'https://tv9telugu.com/andhra-pradesh/'
+const url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=23660'
 const ent_url= 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=15567'
 const tech_url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=23656'
 const cinema_gallery = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=27322'
@@ -253,10 +253,10 @@ app.get('/', function (req, res) {
         const $ = cheerio.load(html)
         const articles = []
 
-        $('.imgCont', html).each(function () { //<-- cannot be a function expression
+        $('figure', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
             const url = $(this).find('a').attr('href')
-            const img = $(this).find('img').attr('data-src')
+            const img = $(this).find('img').attr('src')
             articles.push({
                 title,
                 url,
