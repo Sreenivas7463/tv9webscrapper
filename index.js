@@ -14,6 +14,7 @@ const url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTe
 const ent_url= 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=15567'
 const tech_url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=23656'
 const cinema_gallery = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=27322'
+const cricnews = 'https://tv9telugu.com/wp-json/taxonomies-loadmore?ppp=15&intTermId=76422'
 
 
 
@@ -290,6 +291,54 @@ app.get('/results/:id', (req, res) => {
         }).catch(err => console.log(err))
 
 })
+
+/* cric news start */
+app.get('/cricnews', function (req, res) {
+    axios(cricnews)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('figure', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('img').attr('alt')
+            const url = $(this).find('a').attr('href')
+            const img = $(this).find('img').attr('src')
+            articles.push({
+                title,
+                url,
+                img
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
+app.get('/cricnews/:id', function (req, res) {
+    let pageNo = req.params.id
+    axios(cricnews+`&pageNumber=${pageNo}`)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('figure', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('img').attr('alt')
+            const url = $(this).find('a').attr('href')
+            const img = $(this).find('img').attr('src')
+            articles.push({
+                title,
+                url,
+                img
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+/* cric news end*/
+
 /*start of cine gallery */
 app.get('/cinegallery', function (req, res) {
     axios(cinema_gallery)
