@@ -365,10 +365,10 @@ app.get('/technology/:id', function (req, res) {
         const $ = cheerio.load(html)
         const articles = []
 
-        $('.imgCont', html).each(function () { //<-- cannot be a function expression
+        $('figure', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
             const url = $(this).find('a').attr('href')
-            const img = $(this).find('img').attr('data-src')
+            const img = $(this).find('img').attr('src')
             articles.push({
                 title,
                 url,
