@@ -300,7 +300,7 @@ app.get('/entertainment', function (req, res) {
         $('figure', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
             const url = $(this).find('a').attr('href')
-            const img = $(this).find('img').attr('data-src')
+            const img = $(this).find('img').attr('src')
             articles.push({
                 title,
                 url,
