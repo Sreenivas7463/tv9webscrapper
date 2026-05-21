@@ -422,9 +422,12 @@ app.get('/pics/:slug', function (req, res) {
 
         $('.photo_summary figure', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
-            const img = $(this).find('img').attr('src')
+            const imgwatermark = $(this).find('img').attr('src')
+            const img = $(this).find('img').attr('data-src')
+            
             articles.push({
                 title,
+                imgwatermark,
                 img
             })
         })
