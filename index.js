@@ -15,6 +15,7 @@ const ent_url= 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&in
 const tech_url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=23656'
 const cinema_gallery = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=27322'
 const cricnews = 'https://tv9telugu.com/wp-json/taxonomies-loadmore?ppp=15&intTermId=76422'
+const tv9pics = 'https://tv9telugu.com/'
 
 
 
@@ -403,6 +404,27 @@ app.get('/entertainment', function (req, res) {
             articles.push({
                 title,
                 url,
+                img
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
+app.get('/pics/:slug', function (req, res) {
+    let slug0 = req.params.slug
+    axios(tv9pics+`${slug0}`)
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('figure', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('img').attr('alt')
+            const img = $(this).find('img').attr('src')
+            articles.push({
+                title,
                 img
             })
         })
