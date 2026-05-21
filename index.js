@@ -420,7 +420,7 @@ app.get('/pics/:slug', function (req, res) {
         const $ = cheerio.load(html)
         const articles = []
 
-        $('figure', html).each(function () { //<-- cannot be a function expression
+        $('.photo_summary figure', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('img').attr('alt')
             const img = $(this).find('img').attr('src')
             articles.push({
