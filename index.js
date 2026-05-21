@@ -414,7 +414,7 @@ app.get('/entertainment', function (req, res) {
 
 app.get('/pics/:slug', function (req, res) {
     let slug0 = req.params.slug
-    axios(tv9pics+`${slug0}`)
+    axios(tv9pics+`${slug0}`+'.html')
     .then(response => {
         const html = response.data
         const $ = cheerio.load(html)
