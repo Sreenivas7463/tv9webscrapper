@@ -15,7 +15,7 @@ const ent_url= 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&in
 const tech_url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=23656'
 const cinema_gallery = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=27322'
 const cricnews = 'https://tv9telugu.com/wp-json/taxonomies-loadmore?ppp=15&intTermId=76422'
-const tv9pics = 'https://tv9telugu.com/'
+const tv9pics = 'https://tv9telugu.com/photo-gallery/cinema-photos/'
 
 
 
