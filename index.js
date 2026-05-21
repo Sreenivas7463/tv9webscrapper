@@ -424,11 +424,13 @@ app.get('/pics/:slug', function (req, res) {
             const title = $(this).find('img').attr('alt')
             const imgwatermark = $(this).find('img').attr('src')
             const img = $(this).find('img').attr('data-src')
+            const imgdesc = $(this).find('figcaption p').text()
             
             articles.push({
                 title,
                 imgwatermark,
-                img
+                img,
+                imgdesc
             })
         })
         res.json(articles)
