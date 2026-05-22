@@ -453,7 +453,19 @@ app.get('/andhra/:slug', function (req, res) {
             const imgElement = $(this).find('.articleImg img')
             const img = imgElement.attr('src') || '' 
             const imgcaption = $(this).find('.image_caption span').text().trim()
-            const articleBody = $(this).find('.ArticleBodyCont p').map(function() { return $(this).text().trim(); }).get().join('\n\n')
+            // const articleBody = $(this).find('.ArticleBodyCont p').map(function() { return $(this).text().trim(); }).get().join('\n\n')
+
+          const articleBody = $(this).find('.ArticleBodyCont p').map(function() {
+          // Clone the paragraph to avoid modifying the original webpage structure
+          let $p = $(this).clone();
+          
+          // Replace <strong> tags with Markdown syntax
+          $p.find('strong').each(function() {
+              $(this).replaceWith(`**${$(this).text()}**`);
+          });
+          
+          return $p.text().trim();
+          }).get().join('\n\n');
             
             articles.push({
                 title,
