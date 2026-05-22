@@ -450,8 +450,8 @@ app.get('/pics/:slug', function (req, res) {
         $('.detailBody', html).each(function () { //<-- cannot be a function expression
             const title = $(this).find('h1.article-HD').text().trim()
             const shortdesc = $(this).find('h2.short_desc').text().trim()
-            const imgElement = $(this).find('.articleImg img');
-            const img = imgElement.attr('src') || ''; 
+            const imgElement = $(this).find('.articleImg img')
+            const img = imgElement.attr('src') || '' 
             const imgcaption = $(this).find('.image_caption span').text().trim()
             const articleBody = $(this).find('.ArticleBodyCont p').map(function() { return $(this).text().trim(); }).get().join('\n\n')
             
