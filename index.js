@@ -16,6 +16,7 @@ const tech_url = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&
 const cinema_gallery = 'https://tv9telugu.com/pagecategory/taxonomies-loadmore?ppp=24&intTermId=27322'
 const cricnews = 'https://tv9telugu.com/wp-json/taxonomies-loadmore?ppp=15&intTermId=76422'
 const tv9pics = 'https://tv9telugu.com/photo-gallery/cinema-photos/'
+const tv9andhra = 'https://tv9telugu.com/andhra-pradesh/'
 
 
 
@@ -437,6 +438,36 @@ app.get('/pics/:slug', function (req, res) {
     }).catch(err => console.log(err))
 
 })
+
+app.get('/pics/:slug', function (req, res) {
+    let slug0 = req.params.slug
+    axios(tv9andhra+`${slug0}`+'.html')
+    .then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        const articles = []
+
+        $('.detailBody', html).each(function () { //<-- cannot be a function expression
+            const title = $(this).find('h1.article-HD').text().trim()
+            const shortdesc = $(this).find('h2.short_desc').text().trim()
+            const imgElement = $(this).find('.articleImg img');
+            const img = imgElement.attr('src') || ''; 
+            const imgcaption = $(this).find('.image_caption span').text().trim()
+            const articleBody = $(this).find('.ArticleBodyCont p').map(function() { return $(this).text().trim(); }).get().join('\n\n')
+            
+            articles.push({
+                title,
+                shortdesc,
+                img,
+                imgcaption,
+                articleBody
+            })
+        })
+        res.json(articles)
+    }).catch(err => console.log(err))
+
+})
+
 
 app.get('/entertainment/:id', function (req, res) {
     let pageNo = req.params.id
