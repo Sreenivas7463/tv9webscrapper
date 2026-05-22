@@ -12,6 +12,9 @@ Demo for showing how to scrape data and get backend data to the frontend. This r
 ## [https://sreenewsapi.vercel.app/entertainment](https://sreenewsapi.vercel.app/entertainment)
 ## [https://sreenewsapi.vercel.app/entertainment/2](https://sreenewsapi.vercel.app/entertainment/2)
 
+## [https://sreenewsapi.vercel.app/pics/sreemukhi-latest-photos-on-22-07-2022-au61-751858](https://sreenewsapi.vercel.app/pics/sreemukhi-latest-photos-on-22-07-2022-au61-751858)  
+### these above url fetches pics from tv9 categories photo-gallery or cinema-photos. we need to pass slug of the post
+
 ## To run this project
 
 You can run this project on your local machine. Just pull it down and do the following:
