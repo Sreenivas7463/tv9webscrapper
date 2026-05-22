@@ -439,7 +439,7 @@ app.get('/pics/:slug', function (req, res) {
 
 })
 
-app.get('/pics/:slug', function (req, res) {
+app.get('/andhra/:slug', function (req, res) {
     let slug0 = req.params.slug
     axios(tv9andhra+`${slug0}`+'.html')
     .then(response => {
