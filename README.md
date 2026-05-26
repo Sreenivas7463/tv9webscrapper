@@ -1,6 +1,33 @@
 # NodeJS Webscraper
 Demo for showing how to scrape data and get backend data to the frontend. This repository is for the video tutorial [here](https://youtu.be/-3lqUHeZs_0)
 
+![GitHub Stars](https://www.shieldcn.dev/github/stars/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![GitHub Forks](https://www.shieldcn.dev/github/forks/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![Watchers](https://www.shieldcn.dev/github/watchers/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![Branches](https://www.shieldcn.dev/github/branches/Sreenivas7463/tv9webscrapper.svg?variant=ghost&size=sm)
+![Contributors](https://www.shieldcn.dev/github/contributors/Sreenivas7463/tv9webscrapper.svg?theme=emerald&size=sm)
+![Last commit](https://www.shieldcn.dev/github/last-commit/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![Commits](https://www.shieldcn.dev/github/commits/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![Open issues](https://www.shieldcn.dev/github/open-issues/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![Closed issues](https://www.shieldcn.dev/github/closed-issues/Sreenivas7463/tv9webscrapper.svg?variant=ghost&size=sm)
+![Open PRs](https://www.shieldcn.dev/github/open-prs/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![Closed PRs](https://www.shieldcn.dev/github/closed-prs/Sreenivas7463/tv9webscrapper.svg?variant=ghost&size=sm)
+![Merged PRs](https://www.shieldcn.dev/github/merged-prs/Sreenivas7463/tv9webscrapper.svg?variant=ghost&size=sm)
+![Release](https://www.shieldcn.dev/github/release/Sreenivas7463/tv9webscrapper.svg?size=sm)
+![CI](https://www.shieldcn.dev/github/ci/Sreenivas7463/tv9webscrapper.svg?variant=secondary&size=sm)
+![License](https://www.shieldcn.dev/github/license/Sreenivas7463/tv9webscrapper.svg?variant=ghost&size=sm)
+![npm Version](https://www.shieldcn.dev/npm/web-scraper.svg?variant=secondary&size=sm)
+![npm Weekly Downloads](https://www.shieldcn.dev/npm/dw/web-scraper.svg?size=sm)
+![npm Monthly Downloads](https://www.shieldcn.dev/npm/dm/web-scraper.svg?variant=ghost&size=sm)
+![npm Total Downloads](https://www.shieldcn.dev/npm/dt/web-scraper.svg?variant=secondary&size=sm)
+![npm Dependents](https://www.shieldcn.dev/npm/dependents/web-scraper.svg?variant=secondary&size=sm)
+![npm Types](https://www.shieldcn.dev/npm/types/web-scraper.svg?theme=blue&size=sm)
+![npm Node](https://www.shieldcn.dev/npm/node/web-scraper.svg?variant=secondary&size=sm)
+![npm License](https://www.shieldcn.dev/npm/license/web-scraper.svg?variant=ghost&size=sm)
+![Package mgr · npm](https://www.shieldcn.dev/badge/Package_mgr-npm-CB3837.svg?logo=npm&variant=branded&size=sm)
+![Framework · Next.js](https://www.shieldcn.dev/badge/Framework-Next.js-000000.svg?logo=nextdotjs&variant=branded&size=sm)
+![Hosting · Vercel](https://www.shieldcn.dev/badge/Hosting-Vercel-000000.svg?logo=vercel&variant=branded&size=sm)
+
 <!-- ## [https://sreenewsapi.vercel.app/news18](https://sreenewsapi.vercel.app/news18) -->
 
 ## [https://sreenewsapi.vercel.app/](https://sreenewsapi.vercel.app/)
