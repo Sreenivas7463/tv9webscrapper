@@ -461,7 +461,7 @@ app.get('/andhra/:slug', function (req, res) {
           
           // Replace <strong> tags with Markdown syntax
           $p.find('strong').each(function() {
-              $(this).replaceWith(`**${$(this).text()}**`);
+              $(this).replaceWith(`<strong>${$(this).text()}</strong>`);
           });
           
           return $p.html().trim();
