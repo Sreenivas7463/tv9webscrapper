@@ -464,7 +464,7 @@ app.get('/andhra/:slug', function (req, res) {
               $(this).replaceWith(`**${$(this).text()}**`);
           });
           
-          return $p.text().trim();
+          return $p.html().trim();
           }).get().join('\n\n');
             
             articles.push({
